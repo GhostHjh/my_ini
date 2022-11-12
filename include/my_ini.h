@@ -41,7 +41,10 @@ public:
     operator string();
     operator bool();
 
-    string& str();
+    int to_int();
+    double to_double();
+    string& to_str();
+    bool to_bool();
 
 private:
     string value;

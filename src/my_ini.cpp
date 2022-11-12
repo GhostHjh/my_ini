@@ -80,7 +80,10 @@ my_ini_value::operator bool()
     return (value == "true");
 }
 
-string& my_ini_value::str() { return value; }
+int my_ini_value::to_int()          { return atoi(value.c_str()); }
+double my_ini_value::to_double()    { return atof(value.c_str()); }
+string& my_ini_value::to_str()      { return value; }
+bool my_ini_value::to_bool()        { return (value == "true"); }
 /***********************************************************************************************************/
 
 my_ini::my_ini() {}
@@ -192,7 +195,7 @@ void my_ini::show()
         cout << '[' << a->first << ']' << endl;
 
         for (auto b = (a->second).begin(); b != (a->second).end(); ++ b)
-            cout << b->first << " : " << b->second.str() << endl;
+            cout << b->first << " : " << b->second.to_str() << endl;
         
         cout << endl << endl;
     }
