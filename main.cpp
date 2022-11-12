@@ -64,7 +64,7 @@
 // }
 
 #include <iostream>
-#include "my_ini.h"
+#include "include/my_ini.h"
 
 int main(int argc, char** argv)
 {   
