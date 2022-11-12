@@ -7,7 +7,7 @@ using std::string;
 using std::vector;
 using std::map;
 
-class my_ini_value
+class m_ini_value
 {
 private:
     enum type_t
@@ -21,13 +21,13 @@ private:
     };
     
 public:
-    my_ini_value();
-    my_ini_value(const my_ini_value& argv_tmp_ini_value);
-    my_ini_value(const int& argv_value);
-    my_ini_value(const double& argv_value);
-    my_ini_value(const string& argv_value);
-    my_ini_value(const char* argv_value);
-    my_ini_value(const bool& argv_value);
+    m_ini_value();
+    m_ini_value(const m_ini_value& argv_tmp_ini_value);
+    m_ini_value(const int& argv_value);
+    m_ini_value(const double& argv_value);
+    m_ini_value(const string& argv_value);
+    m_ini_value(const char* argv_value);
+    m_ini_value(const bool& argv_value);
 
     void operator = (const int& argv_value);
     void operator = (const double& argv_value);
@@ -51,13 +51,13 @@ private:
     type_t value_type;
 };
 
-class my_ini
+class m_ini
 {
 public:
-    my_ini();
-    my_ini(const string& argv_file_name);
+    m_ini();
+    m_ini(const string& argv_file_name);
 
-    my_ini_value get(const string& argv_ini_block_name, const string& argv_ini_block_key);
+    m_ini_value get(const string& argv_ini_block_name, const string& argv_ini_block_key);
 
 public:
     bool count(const string& argv_key);
@@ -67,7 +67,7 @@ public:
     
 
 private:
-    map<string, map<string, my_ini_value>> ini_block;
+    map<string, map<string, m_ini_value>> ini_block;
 };
 
 

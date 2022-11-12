@@ -64,11 +64,11 @@
 // }
 
 #include <iostream>
-#include "my_ini.h"
+#include "include/ini.h"
 
 int main(int argc, char** argv)
 {   
-    my_ini tmp("test.ini");
+    m_ini tmp("test.ini");
     tmp.show();
 }
 

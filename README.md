@@ -4,7 +4,7 @@
 
 > * 基础类型
 >   ```c++
->   //my_ini()一共有 6 种类型
+>   //m_ini()一共有 6 种类型
 >   bool    (布尔类型)
 >   int     (整数类型)
 >   double  (浮点类型)
@@ -19,24 +19,24 @@
 >
 >   ```c++
 >   //可以直接使用变量进行构造
->   my_ini(true);
->   my_ini(123);
->   my_ini(123.123);
->   my_ini("string");
+>   m_ini(true);
+>   m_ini(123);
+>   m_ini(123.123);
+>   m_ini("string");
 >
 >
 >   //也可以使用 "=" 来构造(注意, 使用这个方法时, 会销毁原来的值)
->   my_ini() = true;
->   my_ini() = 123;
->   my_ini() = 123.123;
->   my_ini() = "string";
+>   m_ini() = true;
+>   m_ini() = 123;
+>   m_ini() = 123.123;
+>   m_ini() = "string";
 >
 >   ```
 > * 使用 __ini格式文件__ 构造
 >
 >   ```c++
->   //使用一个INI文件来构造, my_ini将读取这个文件并解析它
->   my_ini("ini文件路径");
+>   //使用一个INI文件来构造, m_ini将读取这个文件并解析它
+>   m_ini("ini文件路径");
 >   ```
 
 # 3.获取值的方法
@@ -45,22 +45,22 @@
 >
 >   ```c++
 >   //直接使用 "=" 来获取基础类型的值
->   bool   tmp_bool   = my_ini(ture);
->   int    tmp_int    = my_ini(123);
->   double tmp_double = my_ini(123.123);
->   string tmp_string = my_ini("string");
+>   bool   tmp_bool   = m_ini(ture);
+>   int    tmp_int    = m_ini(123);
+>   double tmp_double = m_ini(123.123);
+>   string tmp_string = m_ini("string");
 >
 >
 >   //获取 "strtus" 中的值
->   my_ini  tmp_int    = my_ini()["string"]["string"];     //数组
+>   m_ini  tmp_int    = m_ini()["string"]["string"];     //数组
 >   ```
 > * 使用自带的函数来获取值
 >
 >   ```c++
->   bool   tmp_bool   = my_ini(ture).to_bool();
->   int    tmp_int    = my_ini(123).to_int();
->   double tmp_double = my_ini(123.123).to_double();
->   string tmp_string = my_ini("string").to_str();
+>   bool   tmp_bool   = m_ini(ture).to_bool();
+>   int    tmp_int    = m_ini(123).to_int();
+>   double tmp_double = m_ini(123.123).to_double();
+>   string tmp_string = m_ini("string").to_str();
 >   ```
 
 # 4.显示当前ini对象的内容
@@ -68,6 +68,6 @@
 > * 直接显示
 >
 >   ```c++
->   my_ini().show();
+>   m_ini().show();
 >   ```
 

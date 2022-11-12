@@ -1,4 +1,4 @@
-#include "my_ini.h"
+#include "ini.h"
 #include <fstream>
 #include <sstream>
 
@@ -8,45 +8,45 @@ using std::ifstream;
 using std::getline;
 using std::stringstream;
 
-/*my_ini_value*/
+/*m_ini_value*/
 /***********************************************************************************************************/
-my_ini_value::my_ini_value()                           { value_type = type_t::Nullptr; }
-my_ini_value::my_ini_value(const my_ini_value& argv_tmp_ini_value)
+m_ini_value::m_ini_value()                           { value_type = type_t::Nullptr; }
+m_ini_value::m_ini_value(const m_ini_value& argv_tmp_ini_value)
 {
     value_type = argv_tmp_ini_value.value_type;
     value = argv_tmp_ini_value.value;
 }
-my_ini_value::my_ini_value(const int& argv_value)      { *this = argv_value; }
-my_ini_value::my_ini_value(const double& argv_value)   { *this = argv_value; }
-my_ini_value::my_ini_value(const string& argv_value)   { *this = argv_value; }
-my_ini_value::my_ini_value(const char* argv_value)     { *this = argv_value; }
-my_ini_value::my_ini_value(const bool& argv_value)     { *this = argv_value; }
+m_ini_value::m_ini_value(const int& argv_value)      { *this = argv_value; }
+m_ini_value::m_ini_value(const double& argv_value)   { *this = argv_value; }
+m_ini_value::m_ini_value(const string& argv_value)   { *this = argv_value; }
+m_ini_value::m_ini_value(const char* argv_value)     { *this = argv_value; }
+m_ini_value::m_ini_value(const bool& argv_value)     { *this = argv_value; }
 
-void my_ini_value::operator = (const int& argv_value)
+void m_ini_value::operator = (const int& argv_value)
 {
     value_type = type_t::Int;
     value = std::to_string(argv_value);
 }
 
-void my_ini_value::operator = (const double& argv_value)
+void m_ini_value::operator = (const double& argv_value)
 {
     value_type = type_t::Double;
     value = std::to_string(argv_value);
 }
 
-void my_ini_value::operator = (const string& argv_value)
+void m_ini_value::operator = (const string& argv_value)
 {
     value_type = type_t::Str;
     value = argv_value;
 }
 
-void my_ini_value::operator = (const char* argv_value)
+void m_ini_value::operator = (const char* argv_value)
 {
     value_type = type_t::Str;
     value = argv_value;
 }
 
-void my_ini_value::operator = (const bool& argv_value)
+void m_ini_value::operator = (const bool& argv_value)
 {
     value_type = type_t::Bool;
     if (argv_value)
@@ -55,39 +55,39 @@ void my_ini_value::operator = (const bool& argv_value)
         value = "false";
 }
 
-my_ini_value::operator int()
+m_ini_value::operator int()
 {
     return atoi(value.c_str());
 }
 
-my_ini_value::operator double()
+m_ini_value::operator double()
 {
     return atof(value.c_str());
 }
 
-my_ini_value::operator const char*()
+m_ini_value::operator const char*()
 {
     return value.c_str();
 }
 
-my_ini_value::operator string()
+m_ini_value::operator string()
 {
     return value;
 }
 
-my_ini_value::operator bool()
+m_ini_value::operator bool()
 {
     return (value == "true");
 }
 
-int my_ini_value::to_int()          { return atoi(value.c_str()); }
-double my_ini_value::to_double()    { return atof(value.c_str()); }
-string& my_ini_value::to_str()      { return value; }
-bool my_ini_value::to_bool()        { return (value == "true"); }
+int m_ini_value::to_int()          { return atoi(value.c_str()); }
+double m_ini_value::to_double()    { return atof(value.c_str()); }
+string& m_ini_value::to_str()      { return value; }
+bool m_ini_value::to_bool()        { return (value == "true"); }
 /***********************************************************************************************************/
 
-my_ini::my_ini() {}
-my_ini::my_ini(const string& argv_file_name)
+m_ini::m_ini() {}
+m_ini::m_ini(const string& argv_file_name)
 {
     ifstream file_in(argv_file_name);
 
@@ -149,12 +149,12 @@ my_ini::my_ini(const string& argv_file_name)
 }
 
 
-bool my_ini::count(const string& argv_key)
+bool m_ini::count(const string& argv_key)
 {
     return (ini_block.count(argv_key) == 1);
 }
 
-bool my_ini::count(const string& argv_name_key, const string& argv_value_name_key)
+bool m_ini::count(const string& argv_name_key, const string& argv_value_name_key)
 {
     if (count(argv_name_key))
     {
@@ -164,7 +164,7 @@ bool my_ini::count(const string& argv_name_key, const string& argv_value_name_ke
     return false;
 }
 
-bool my_ini::push_back(const string& argv_name, const string& argv_key, const string& argv_value)
+bool m_ini::push_back(const string& argv_name, const string& argv_key, const string& argv_value)
 {
     if (!count(argv_name))
     {
@@ -180,15 +180,15 @@ bool my_ini::push_back(const string& argv_name, const string& argv_key, const st
     return false;  
 }
 
-my_ini_value my_ini::get(const string& argv_ini_block_name, const string& argv_ini_block_key)
+m_ini_value m_ini::get(const string& argv_ini_block_name, const string& argv_ini_block_key)
 {
     if (count(argv_ini_block_name, argv_ini_block_key))
         return ini_block[argv_ini_block_name][argv_ini_block_key];
     
-    return my_ini_value();
+    return m_ini_value();
 }
 
-void my_ini::show()
+void m_ini::show()
 {
     for (auto a = ini_block.begin(); a != ini_block.end(); ++a)
     {
